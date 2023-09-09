@@ -1,0 +1,25 @@
+---
+- name: Playbook to Install Apache webserver on webserver node.
+hosts:
+- webserver
+tasks:
+- name: Install apache and php
+package:
+name:
+- apache2
+- php
+state: present
+
+- name: Playbook to Install MariaDB database server on dbserver node.
+hosts:
+- dbserver
+tasks:
+- name: Install mariadb
+package:
+name:
+- mariadb-server
+- mariadb-client
+state: present
+
+# ansible -m shell -a 'dpkg -l | grep -E "apache2"' webserver
+# ansible -m shell -a 'dpkg -l | grep -E "mariadb"' dbserver
